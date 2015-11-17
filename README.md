@@ -3,4 +3,4 @@
 # Magic the Gathering board.
 
 New players connect to the application, and are added to the board, then they can send life updates and all users connected get the updated lifes.
-It uses [socket.io](socket.io) to send new player connection and life updates for all connected users.
+It uses [socket.io](https://socket.io) to send new player connection and life updates for all connected users.
