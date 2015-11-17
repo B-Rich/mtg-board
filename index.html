@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+	<title>Commander</title>
+  <link rel='stylesheet' type='text/css' href='/public/css/styles.css'/>
+  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.indigo-pink.min.css"/>
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.5/material.min.js"/></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Roboto:300,400,500,700"/>
+	<style >
+		* { margin: 0; padding: 0; box-sizing: border-box; }
+		body { font: 14px Helvetica, Arial; }
+		.form { background: #ccc; padding: 10px; position: fixed; bottom: 0; width: 100%; }
+		.form .name { border: 0; padding: 10px; width: 15%; margin-right: 5px; }
+		.form .msg { border: 0; padding: 10px; width: 60%; margin-right: 5px; }
+			.form button { background: navy; color: #fff; border: none; padding: 10px; }
+		.messages { list-style-type: none; margin: 0; padding: 0; }
+		.messages li { padding: 5px 10px; }
+		.messages li:nth-child(odd) { background: #eee; }
+		.msgSender { font-weight: bold; }
+	</style>
+</head>
+<body>
+	<div id="container"></div>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/build/js/client.js"></script>
+</body>
+</html>
