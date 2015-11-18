@@ -4,6 +4,11 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var fs = require('fs');
 
+// Actions
+var updateLife = require('./src/actions/updateLife');
+var updateHistory = require('./src/actions/updateHistory');
+var createPlayer = require('./src/actions/createPlayer');
+
 app.use(express.static('./'));
 
 app.get('*', function(req, res){
@@ -14,18 +19,12 @@ var history = [];
 var players = [];
 
 io.on('connection', function(socket){
-  socket.on('new_player', function(payload){
-    console.log('New player: ' + payload.name);
-    players.push(payload);
-    io.sockets.emit('player_added', players);
+  socket.on('new_player', function(name){
+    io.sockets.emit('player_added', createPlayer(name, players));
   });
-  socket.on('update_life', function(payload){
-    var name = payload.name;
-    var found = players.reduce(function(a, b){
-      return (a.name==name && a) || (b.name == name && b)
-    });
-    found.life = found.life + parseInt(payload.life);
-    io.sockets.emit('life_updated', players);
+  socket.on('update_life', function(player){
+    io.sockets.emit('life_updated', updateLife(player, players));
+    io.sockets.emit('history_updated', updateHistory(player, history));
   });
 });
 
