@@ -16,6 +16,11 @@ let Controls = React.createClass({
 
 		this.refs['form'].getDOMNode().reset();
 	},
+  resetMatch: function() {
+    if (confirm('Are you sure?')) {
+      this.socket.emit('reset_match');
+    }
+  },
   render: function() {
     return (
       <div id='controls'>
@@ -26,6 +31,7 @@ let Controls = React.createClass({
           </div>
           <button>Enviar</button>
         </form>
+        <a id='reset' href='#' onClick={this.resetMatch}>Reset match</a>
       </div>
     );
   }
