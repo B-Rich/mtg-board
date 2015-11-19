@@ -23,6 +23,7 @@ var players = [];
 io.on('connection', function(socket){
   socket.on('new_player', function(name){
     io.sockets.emit('player_added', createPlayer(name, players));
+    io.sockets.emit('history_updated', history);
   });
   socket.on('update_life', function(player){
     io.sockets.emit('life_updated', updateLife(player, players));
