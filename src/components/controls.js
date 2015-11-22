@@ -2,18 +2,22 @@ import React from 'react';
 
 let Controls = React.createClass({
   getInitialState: function() {
-    return { username: prompt('Enter name:') }
+    return {
+      username: prompt('Enter name:'),
+      id: ''
+    }
   },
   componentDidMount: function() {
+    var that = this;
     this.socket = io();
     this.socket.emit('new_player', this.state.username);
+    this.socket.on('update_player_id', function(id){
+      that.setState({id: id});
+    });
   },
-  updateLife: function(e) {
+  updateLife: function(amount, e) {
 		e.preventDefault();
-		let life = this.refs['life'].getDOMNode().value;
-
-    this.socket.emit('update_life', { name: this.state.username, life: life });
-
+    this.socket.emit('update_life', { id: this.state.id, name: this.state.username, life: amount });
 		this.refs['form'].getDOMNode().reset();
 	},
   resetMatch: function() {
@@ -24,13 +28,16 @@ let Controls = React.createClass({
   render: function() {
     return (
       <div id='controls'>
-        <form action='' ref='form' onSubmit={this.updateLife}>
-          <div>
-            <label htmlFor="life-input">Life:</label>
-            <input type="text" pattern="-?[0-9]*(\.[0-9]+)?" ref="life" />
-          </div>
-          <button>Enviar</button>
-        </form>
+        <ul>
+          <li><a href='#' onClick={this.updateLife.bind(this, 10)}>+10</a></li>
+          <li><a href='#' onClick={this.updateLife.bind(this, 5)}>+5</a></li>
+          <li><a href='#' onClick={this.updateLife.bind(this, 1)}>+1</a></li>
+        </ul>
+        <ul>
+          <li><a href='#' onClick={this.updateLife.bind(this, -10)}>-10</a></li>
+          <li><a href='#' onClick={this.updateLife.bind(this, -5)}>-5</a></li>
+          <li><a href='#' onClick={this.updateLife.bind(this, -1)}>-1</a></li>
+        </ul>
         <a id='reset' href='#' onClick={this.resetMatch}>Reset match</a>
       </div>
     );

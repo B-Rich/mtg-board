@@ -8,7 +8,7 @@ let Players = React.createClass({
   componentDidMount: function() {
     var that = this;
 		this.socket = io();
-    this.socket.on('player_added', function(payload){
+    this.socket.on('update_players', function(payload){
       that.setState({ players: payload });
     });
     this.socket.on('life_updated', function(payload){

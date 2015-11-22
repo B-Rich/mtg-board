@@ -1,8 +1,8 @@
 var _ = require('underscore');
 
 var updateLife = function(player, players) {
-  var name = player.name;
-  var found =  _.findWhere(players, { name: name });
+  var id = player.id;
+  var found =  _.findWhere(players, { id: id });
   found.life = found.life + parseInt(player.life);
   return players;
 }
