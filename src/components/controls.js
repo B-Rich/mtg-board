@@ -18,7 +18,6 @@ let Controls = React.createClass({
   updateLife: function(amount, e) {
 		e.preventDefault();
     this.socket.emit('update_life', { id: this.state.id, name: this.state.username, life: amount });
-		this.refs['form'].getDOMNode().reset();
 	},
   resetMatch: function() {
     if (confirm('Are you sure?')) {

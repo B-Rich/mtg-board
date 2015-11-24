@@ -8,8 +8,8 @@ let App = React.createClass({
   render: function() {
 		return (
       <div className={'row'}>
-        <ul className={'tabs'} data-tab role='tablist'>
-          <li className={'tabs-title is-active'}><a href="#board">Board</a></li>
+        <ul className={'tabs'} data-tabs>
+          <li className={'tabs-title is-active'} aria-selected={'true'}><a href="#board">Board</a></li>
           <li className={'tabs-title'}><a href="#history">History</a></li>
         </ul>
         <div className={'tabs-content'}>

@@ -13,10 +13,10 @@ let History = React.createClass({
   },
   render: function() {
     var rows = this.state.history.map(function(row, k) {
-      return (<li key={k}>{row.text}</li>);
+      return (<div key={k} className={'small-12 columns'}>{row.text}</div>);
     });
     return (
-      <div id='history'><ul>{rows}</ul></div>
+      <div id='history' className={'row'}>{rows}</div>
     );
   }
 });
