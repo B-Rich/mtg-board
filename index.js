@@ -15,6 +15,7 @@ let App = React.createClass({
         <div className={'tabs-content'}>
           <div className={'tabs-panel is-active'} id='board'>
             <Players />
+            <hr/>
             <Controls />
           </div>
           <div className={'tabs-panel'} id='history'>

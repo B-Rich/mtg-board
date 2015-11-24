@@ -23,7 +23,7 @@ let Players = React.createClass({
       );
     });
     return (
-      <div id='players'><ul>{players}</ul></div>
+      <div className={'row small-up-2 large-up-6'}>{players}</div>
     );
   }
 });

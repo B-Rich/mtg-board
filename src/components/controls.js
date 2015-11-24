@@ -27,18 +27,20 @@ let Controls = React.createClass({
   },
   render: function() {
     return (
-      <div id='controls'>
-        <ul>
-          <li><a href='#' onClick={this.updateLife.bind(this, 10)}>+10</a></li>
-          <li><a href='#' onClick={this.updateLife.bind(this, 5)}>+5</a></li>
-          <li><a href='#' onClick={this.updateLife.bind(this, 1)}>+1</a></li>
-        </ul>
-        <ul>
-          <li><a href='#' onClick={this.updateLife.bind(this, -10)}>-10</a></li>
-          <li><a href='#' onClick={this.updateLife.bind(this, -5)}>-5</a></li>
-          <li><a href='#' onClick={this.updateLife.bind(this, -1)}>-1</a></li>
-        </ul>
-        <a id='reset' href='#' onClick={this.resetMatch}>Reset match</a>
+      <div id='controls' className={'row'}>
+        <div className={'small-9 columns'}>
+          <div className={'small button-group'}>
+            <a href='#' className={'button'} onClick={this.updateLife.bind(this, 10)}>+10</a>
+            <a href='#' className={'button'} onClick={this.updateLife.bind(this, 5)}>+5</a>
+            <a href='#' className={'button'} onClick={this.updateLife.bind(this, 1)}>+1</a>
+            <a href='#' className={'button'} onClick={this.updateLife.bind(this, -10)}>-10</a>
+            <a href='#' className={'button'} onClick={this.updateLife.bind(this, -5)}>-5</a>
+            <a href='#' className={'button'} onClick={this.updateLife.bind(this, -1)}>-1</a>
+          </div>
+        </div>
+        <div className={'small-3 columns'}>
+          <a id='reset' href='#' className={'alert small button'}  onClick={this.resetMatch}>Reset</a>
+        </div>
       </div>
     );
   }
