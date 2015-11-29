@@ -27,4 +27,20 @@ let App = React.createClass({
 	}
 });
 
-React.render(<App />, document.getElementById('app'));
+let App2 = React.createClass({
+  componentDidMount: function() {
+    this.socket = io();
+  },
+  createRoom: function() {
+    var roomName = prompt('Enter room name:');
+    this.socket.emit('createRoom', roomName);
+  },
+  render: function() {
+    return (
+      <div className={'row'}><a href='#' onClick={this.createRoom}>Create room</a></div>
+    );
+  }
+});
+
+//React.render(<App />, document.getElementById('app'));
+React.render(<App2 />, document.getElementById('app'));
